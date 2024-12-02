@@ -57,9 +57,11 @@ public class BlackjackGUI extends JFrame {
         controlPanel.add(hitButton);
         controlPanel.add(standButton);
         controlPanel.add(newGameButton);
-        controlPanel.add(new JLabel("Bet: $") {{
-            setForeground(Color.WHITE);
-        }});
+        
+        // Create and add bet label properly
+        JLabel betTextLabel = new JLabel("Bet: $");
+        betTextLabel.setForeground(Color.WHITE);
+        controlPanel.add(betTextLabel);
         controlPanel.add(betField);
 
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
@@ -83,8 +85,8 @@ public class BlackjackGUI extends JFrame {
 
         // Initialize game
         deck = new Deck();
-        player = new Player(1000.0);  // Changed constructor call
-        dealer = new Player(0);      // Changed constructor call
+        player = new Player(1000.0);
+        dealer = new Player(0);
 
         // Add button actions
         hitButton.addActionListener(e -> hit());
